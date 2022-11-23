@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react'
+// import {connect} from 'react-redux'
+// import { createStructuredSelector } from 'reselect';
+// import { cartAddItem, cartRemoveItem } from '../../../redux/cart/cart.action';
+// import { selectCartItems, selectCartItemsCount } from '../../../redux/cart/cart.selector';
 import ButtonAddRemoveItem from '../ButtonAddRemoveItem';
 import './style.css'
 
+
+
 const Menu = () => {
+
+  
 
   const [menuData, setMenuData] = useState([]);
 
@@ -18,6 +26,20 @@ const Menu = () => {
     getMenuData();
   }, []);
 
+  // const handleItemQuantity = () => {
+  //   let quantity = 0;
+  //   if (cartCount !== 0){
+  //     const foundUtemInCart = cartList.find(item=>item.id===id);
+  
+  //     if (foundUtemInCart) {
+  //       quantity = foundUtemInCart.quantity;
+  //     }
+  //   }
+  
+  //   return quantity;
+  // }
+
+  
   return (
     <div className='item-main'>
       {menuData.map(item => (
@@ -33,7 +55,12 @@ const Menu = () => {
 
           <div className="item-foot-detail">
             <span className='foot-detail-price'>₹{item.price}</span>
-            <ButtonAddRemoveItem  quantity={18}/>
+            {/* <ButtonAddRemoveItem  
+              quantity={handleItemQuantity()}
+              handleCartAddItem={() => cartAddItem(item)}
+              handleRemoveItem={() => cartRemoveItem(item)}
+              /> */}
+              <ButtonAddRemoveItem quantity={10} />
             {/* <button>Add +</button> */}
           </div>
 
@@ -44,5 +71,18 @@ const Menu = () => {
 
   )
 }
+
+
+// const mapStateToProps = createStructuredSelector({
+//   cartCount: selectCartItemsCount,
+//   cartList: selectCartItems,
+// });
+
+// const mapDispatchToProps = (dispatch) => ({
+//   cartAddItem: (item) => dispatch(cartAddItem(item)),
+//   cartRemoveItem: (item) => dispatch(cartRemoveItem(item)),
+// });
+
+// export default connect(mapStateToProps,mapDispatchToProps) (Menu);
 
 export default Menu;
